@@ -1,6 +1,6 @@
 /**
  * @file file
- * @author Chen Bo(chenbo09@baidu.com)
+ * @author chenbo09
  * Created on 2018/1/29.
  */
 

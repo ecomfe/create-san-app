@@ -1,21 +1,23 @@
-// style
+/**
+ * @file 项目主入口
+ * @author chenbo09
+ */
 
+import {router} from 'san-router';
+
+// style
 import 'san-xui/dist/xui.css';
 import './style.less';
 
 // actions
-import './bce/action'
+import './page/action';
+
+// config route
+import BasicList from './page/list.js';
 
 
-// route
-
-import BceBasicList from './bce/BasicList.js'
-
-import {router} from 'san-router'
-
-
-router.add({rule: '/', Component: BceBasicList, target: '#app'});
-router.add({rule: '/bce/list', Component: BceBasicList, target: '#app'});
+router.add({rule: '/', Component: BasicList, target: '#app'});
+router.add({rule: '/page/list', Component: BasicList, target: '#app'});
 
 // start
 router.start();

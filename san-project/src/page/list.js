@@ -1,34 +1,18 @@
-import san from 'san'
-import {formatDate} from '../filters'
-import {Link} from 'san-router'
-import {connect} from 'san-store'
+/**
+ * @file a simple list demo
+ * @author chenbo09
+ */
+
+import san from 'san';
+import {Link} from 'san-router';
+import {connect} from 'san-store';
 
 import {Table, Button, Select} from 'san-xui';
+
+import {template} from './list.template';
+import {formatDate} from '../filters';
 import {tableConf} from './config';
 
-const template = `
-<template>
-<div class="list-main">
-    <h2>BCE-SAN-APP BasicListDemo</h2>
-    <xui-select datasource="{{userNames}}" on-change="resetList" value="{=userName=}"/>
-    <xui-table
-        schema="{{table.schema}}"
-        cell-builder="{{table.cellRenderer}}"
-        on-command="onCommand"
-        loading="{{table.loading}}"
-        error="{{table.error}}"
-        datasource="{{users}}">
-        <div class="ui-table-loading" slot="loading">自定义加载中....</div>
-        <div class="ui-table-error" slot="error">
-            啊呀，出错了？<a href="javascript:void(0)" on-click="resetList">重新加载</a>
-        </div>
-    </xui-table>
-    
-    <xui-button on-click="resetList">刷新</xui-button>
-    
-</div>
-</template>
-`
 
 let MyComponent = san.defineComponent({
     template,
@@ -39,7 +23,7 @@ let MyComponent = san.defineComponent({
         'xui-select': Select
     },
 
-    //todo 还需优化 。目前共享的数据放在了san-store, 本地配置类型的数据放在initData。
+    // 目前共享的数据放在了san-store, 本地配置类型的数据放在initData。
     initData() {
         return {
             userNames: [],
@@ -50,7 +34,7 @@ let MyComponent = san.defineComponent({
     },
 
     filters: {
-        formatDate: formatDate
+        formatDate
     },
 
     route() {
@@ -95,5 +79,4 @@ connect.san(
     }
 )(MyComponent);
 
-
-export default MyComponent
+export default MyComponent;

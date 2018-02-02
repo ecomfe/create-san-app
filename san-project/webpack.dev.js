@@ -1,6 +1,6 @@
 /**
  * @file file
- * @author Chen Bo(chenbo09@baidu.com)
+ * @author chenbo09
  * Created on 2018/1/29.
  */
 
@@ -17,7 +17,7 @@ module.exports = merge(common, {
             '/api': {
                 // 转发到mockup的服务上了 具体见mockup/server
                 target: 'http://localhost:9001',
-                pathRewrite: {'^/api' : ''}
+                pathRewrite: {'^/api': ''}
             }
         }
     }

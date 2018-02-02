@@ -1,1 +1,1 @@
-this is bce-san-project
+this is a-san-app-project

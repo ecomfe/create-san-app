@@ -1,10 +1,9 @@
 /**
  * @file file
- * @author Chen Bo(chenbo09@baidu.com)
- * Created on 2018/1/31.
+ * @author chenbo09
  */
 
-export const tableConf =  {
+export const tableConf = {
     schema: [
         {name: 'name', label: '姓名', labelClassName: 'col-name'},
         {
@@ -29,4 +28,4 @@ export const tableConf =  {
         }
         return item[key];
     }
-}
+};

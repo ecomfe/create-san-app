@@ -1,32 +1,41 @@
 /**
+ /**
  * @file 服务
+ * @author chenbo09
  */
 
 import axios from 'axios';
 
 export default {
-    // 在baseList中被使用
-
-    fetchUsers: function (userName) {
-        return axios.post('/api/users', {userName})
-        .then(function (response) {
+    async fetchUsers(userName) {
+        try {
+            const response = await axios.post('/api/users', {userName});
             return response.data;
-        })
+        }
+        catch (err) {
+            return err;
+        }
     },
 
-    removeUser: function (id) {
-        return axios.post('/api/user/remove', {
-            id
-        })
-        .then(function (response) {
+    async removeUser(id) {
+        try {
+            const response = await axios.post('/api/user/remove', {
+                id
+            });
             return response.data;
-        })
+        }
+        catch (err) {
+            return err;
+        }
     },
 
-    fetchUserNames: function () {
-        return axios.post('/api/userNames', {})
-        .then(function (response) {
+    async fetchUserNames() {
+        try {
+            const response = await axios.post('/api/userNames', {});
             return response.data;
-        })
+        }
+        catch (err) {
+            return err;
+        }
     }
 };

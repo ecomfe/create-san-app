@@ -1,7 +1,6 @@
 /**
- * @file file
- * @author Chen Bo(chenbo09@baidu.com)
- * Created on 2018/1/31.
+ * @file mock服务入口
+ * @author chenbo09
  */
 
 
@@ -18,7 +17,6 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 
 // Add custom routes before JSON Server router。
-console.log(customRoutes)
 server.use(jsonServer.rewriter(customRoutes));
 
 // To handle POST, PUT and PATCH you need to use a body-parser
@@ -29,14 +27,14 @@ server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
     // 因为本地mock不想改数据 先把所有的POST请求转为GET
     if (req.method === 'POST') {
-        req.method = 'GET'
+        req.method = 'GET';
     }
     // Continue to JSON Server router
-    next()
+    next();
 });
 
 // Use default router
 server.use(router);
 server.listen(9001, () => {
-    console.log('JSON Server is running')
+    console.log('JSON Server is running');
 });

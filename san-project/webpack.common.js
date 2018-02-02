@@ -1,6 +1,6 @@
 /**
  * @file file
- * @author Chen Bo(chenbo09@baidu.com)
+ * @author chenbo09
  * Created on 2018/1/28.
  */
 
@@ -12,17 +12,15 @@ function alias(name) {
     return path.dirname(require.resolve(name));
 }
 
-
 module.exports = {
     entry: {
-        // app: './src/index.js'
         app: './src/main.js'
 
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
-            title: 'Bce Production',
+            title: 'SAN APP',
             filename: 'index.html',
             template: 'index.html',
             inject: true
@@ -95,19 +93,6 @@ module.exports = {
                     }
                 }
             },
-            //{
-            //    test: /\.css$/,
-            //    use: [
-            //        'style-loader',
-            //        'css-loader'
-            //    ]
-            //},
-            //{
-            //    test: /\.(png|svg|jpg|gif)$/,
-            //    use: [
-            //        'file-loader'
-            //    ]
-            //},
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [

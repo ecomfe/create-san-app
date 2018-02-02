@@ -1,12 +1,9 @@
 /**
- * @file 存放san filter
- * @author Chen Bo(chenbo09@baidu.com)
- * Created on 2018/1/31.
+ * @file 存放公用的san filter
+ * @author chenbo09
  */
 
 import moment from 'moment';
 
-export const formatDate = (value, format) => {
-    return moment(value).format(format)
-};
+export const formatDate = (value, format) => moment(value).format(format);
 

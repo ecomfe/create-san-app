@@ -1,6 +1,11 @@
-import {store} from 'san-store'
-import {updateBuilder} from 'san-update'
-import service from '../service'
+/**
+ * @file action
+ * @author chenbo09
+ */
+
+import {store} from 'san-store';
+import {updateBuilder} from 'san-update';
+import service from '../service';
 
 // user的例子
 
@@ -30,7 +35,7 @@ store.addAction('startRemoveUser', function (id, {getState, dispatch}) {
         let index = -1;
         // todo 可以用lodash
         users.forEach((item, i) => {
-            if (id == item.id) {
+            if (id === item.id) {
                 index = i;
             }
         });
