@@ -8,9 +8,9 @@ import {Link} from 'san-router';
 import {connect} from 'san-store';
 
 import {Table, Button, Select} from 'san-xui';
+import {formatDate} from '../filters';
 
 import {template} from './list.template';
-import {formatDate} from '../filters';
 import {tableConf} from './config';
 
 

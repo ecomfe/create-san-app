@@ -5,6 +5,8 @@
 
 import {store} from 'san-store';
 import {updateBuilder} from 'san-update';
+import _ from 'lodash';
+
 import service from '../service';
 
 // user的例子
@@ -32,14 +34,7 @@ store.addAction('fillUsers', function (users) {
 store.addAction('startRemoveUser', function (id, {getState, dispatch}) {
     return service.removeUser(id).then(data => {
         let users = getState('users');
-        let index = -1;
-        // todo 可以用lodash
-        users.forEach((item, i) => {
-            if (id === item.id) {
-                index = i;
-            }
-        });
-
+        const index = _.findIndex(users, ['id', id]);
         if (index >= 0) {
             dispatch('removeUser', index);
         }

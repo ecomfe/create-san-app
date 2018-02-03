@@ -1,9 +1,10 @@
 /**
- * @file file
+ * @file dev
  * @author chenbo09
- * Created on 2018/1/29.
  */
 
+'use strict';
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -20,5 +21,10 @@ module.exports = merge(common, {
                 pathRewrite: {'^/api': ''}
             }
         }
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': require('./dev.env')
+        })
+    ]
 });

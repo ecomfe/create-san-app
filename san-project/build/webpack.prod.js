@@ -1,9 +1,9 @@
 /**
- * @file file
+ * @file prod
  * @author chenbo09
- * Created on 2018/1/29.
  */
 
+'use strict';
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -16,7 +16,7 @@ module.exports = merge(common, {
             sourceMap: true
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env': require('./prod.env')
         })
     ]
 });
