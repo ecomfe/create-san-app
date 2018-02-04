@@ -54,6 +54,29 @@ module.exports = merge(common, {
             // necessary to consistently work with multiple chunks via CommonsChunkPlugin
             chunksSortMode: 'dependency'
         }),
+        // split vendor js into its own file
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks(module) {
+                // any required modules inside node_modules are extracted to vendor
+                return (
+                    module.resource && /\.js$/.test(module.resource)
+                    && module.resource.indexOf(
+                        path.join(__dirname, '../node_modules')
+                    ) === 0
+                );
+            }
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest',
+            minChunks: Infinity
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'app',
+            async: 'vendor-async',
+            children: true,
+            minChunks: 3
+        }),
         new CleanWebpackPlugin(['dist']),
         new CopyWebpackPlugin([
             {
