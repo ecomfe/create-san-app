@@ -3,7 +3,6 @@
  * @author chenbo09
  */
 
-
 const jsonServer = require('json-server');
 const server = jsonServer.create();
 // todo 改成js 来动态生成业务固定格式？比如list

@@ -5,30 +5,35 @@
 
 'use strict';
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const config = require('./config.index');
+
+const extractCSS = new ExtractTextPlugin({
+    filename: 'static/css/[name].[contenthash].css',
+    disable: process.env.NODE_ENV === 'development'
+});
+
+const extractLESS = new ExtractTextPlugin({
+    filename: 'static/css/[name].[contenthash].css',
+    disable: process.env.NODE_ENV === 'development'
+});
 
 function alias(name) {
     return path.dirname(require.resolve(name));
 }
 
 module.exports = {
+    context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'
-
     },
-    plugins: [
-        new CleanWebpackPlugin(['dist']),
-        new HtmlWebpackPlugin({
-            title: 'SAN APP',
-            filename: 'index.html',
-            template: 'index.html',
-            inject: true
-        })
-    ],
     output: {
+        path: config.build.assetsRoot,
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
+        publicPath: process.env.NODE_ENV === 'production'
+            ? config.build.assetsPublicPath
+            : config.dev.assetsPublicPath
     },
     resolve: {
         extensions: ['.js', '.jsx', '.es6'],
@@ -58,21 +63,25 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: extractCSS.extract({
+                    use: ['css-loader'],
+                    fallback: 'style-loader'
+                })
             },
             {
                 test: /\.less$/,
-                use: [
-                    {loader: 'style-loader'},
-                    {loader: 'css-loader'},
-                    {
+                use: extractLESS.extract({
+                    use: [{
+                        loader: 'css-loader'
+                    }, {
                         loader: 'less-loader',
                         options: {
                             relativeUrls: true,
                             paths: []
                         }
-                    }
-                ]
+                    }],
+                    fallback: 'style-loader'
+                })
             },
             {
                 test: /\.es6$/,
@@ -100,5 +109,10 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        // extract css into its own file
+        extractCSS,
+        extractLESS
+    ]
 };
