@@ -7,7 +7,7 @@ import {store} from 'san-store';
 import {updateBuilder} from 'san-update';
 import _ from 'lodash';
 
-import service from '../service';
+import service from '../../service';
 
 // user的例子
 
