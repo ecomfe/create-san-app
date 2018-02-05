@@ -12,7 +12,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const config = require('./config.index');
+const config = require('./build.conf');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {

@@ -10,21 +10,24 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const config = require('./config.index');
+const config = require('./build.conf');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-    devtool: 'inline-source-map',
+    devtool: config.dev.devtool,
     devServer: {
         contentBase: './dist',
         compress: true,
-        port: 9000,
+        port: config.dev.port,
         proxy: {
             '/api': {
                 // 转发到mockup的服务上了 具体见mockup/server
                 target: 'http://localhost:9001',
                 pathRewrite: {'^/api': ''}
             }
+        },
+        watchOptions: {
+            poll: config.dev.poll
         }
     },
     plugins: [

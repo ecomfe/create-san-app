@@ -7,7 +7,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const config = require('./config.index');
+const config = require('./build.conf');
 
 const extractCSS = new ExtractTextPlugin({
     filename: 'static/css/[name].[contenthash].css',
