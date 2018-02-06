@@ -77,7 +77,7 @@ module.exports = merge(common, {
             children: true,
             minChunks: 3
         }),
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['../dist']),
         new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, '../static'),

@@ -16,9 +16,11 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
     devtool: config.dev.devtool,
     devServer: {
-        contentBase: './dist',
+        contentBase: false, // since we use CopyWebpackPlugin.
         compress: true,
         port: config.dev.port,
+        open: false,
+        publicPath: '/',
         proxy: {
             '/api': {
                 // 转发到mockup的服务上了 具体见mockup/server

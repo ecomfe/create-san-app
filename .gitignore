@@ -59,6 +59,7 @@ typings/
 
 # san-project
 san-project/dist/
+san-project/package-lock.json
 
 # dev
 .idea/

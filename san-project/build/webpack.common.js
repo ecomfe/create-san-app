@@ -52,11 +52,10 @@ module.exports = {
                 test: /\.(png|gif|jpe?g|svg)$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: 'url-loader',
                         options: {
-                            name(file) {
-                                return 'assets/images/[hash].[ext]';
-                            }
+                            limit: 10000,
+                            name: 'static/img/[name].[hash:7].[ext]'
                         }
                     }
                 ]
@@ -105,7 +104,7 @@ module.exports = {
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
-                    'file-loader'
+                    'url-loader'
                 ]
             }
         ]

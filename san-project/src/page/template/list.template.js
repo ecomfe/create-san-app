@@ -3,9 +3,12 @@
  * @author chenbo09
  */
 
+import img from '../../assets/images/san-logo.svg';
+
 export const template = `
 <template>
 <div class="list-main">
+    <img src="${img}">
     <h2>SAN-APP LIST DEMO</h2>
     <xui-select datasource="{{userNames}}" on-change="resetList" value="{=userName=}"/>
     <xui-table
