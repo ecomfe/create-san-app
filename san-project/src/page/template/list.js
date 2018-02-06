@@ -4,7 +4,7 @@
  */
 
 import san from 'san';
-import {Link} from 'san-router';
+import {router, Link} from 'san-router';
 import {connect} from 'san-store';
 
 import {Table, Button, Select} from 'san-xui';
@@ -14,7 +14,7 @@ import {template} from './list.template';
 import {tableConf} from './config';
 
 
-let MyComponent = san.defineComponent({
+const MyComponent = san.defineComponent({
     template,
     components: {
         'router-link': Link,
@@ -40,8 +40,8 @@ let MyComponent = san.defineComponent({
     route() {
         // route 这个对象里面有query path等值，可以用来初始化参数
         // 如果要改本地变量，直接改即可。如果要改san-store中的变量，必须通过action
-        let route = this.data.get('route');
-        let id = route.query.id || '';
+        const route = this.data.get('route');
+        const id = route.query.id || '';
 
         // 这里假设从其他页面可能带一个参数过来例如本地变量 id，进来的时候处理。
 
@@ -61,9 +61,13 @@ let MyComponent = san.defineComponent({
         });
     },
 
+    reloadPage() {
+        router.locator.reload();
+    },
+
     onCommand({type, payload, rowIndex}) {
         // 通过store修改users
-        let user = this.data.get('users')[rowIndex - 1];
+        const user = this.data.get('users')[rowIndex - 1];
         this.actions.remove(user.id);
     }
 });

@@ -23,9 +23,8 @@ export const template = `
             啊呀，出错了？<a href="javascript:void(0)" on-click="resetList">重新加载</a>
         </div>
     </xui-table>
-    
-    <xui-button on-click="resetList">刷新</xui-button>
-    
+    <xui-button on-click="resetList">刷新列表</xui-button>
+    <xui-button on-click="reloadPage">刷新整页</xui-button>
 </div>
 </template>
 `;
