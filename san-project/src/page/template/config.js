@@ -5,7 +5,7 @@
 
 export const tableConf = {
     schema: [
-        {name: 'name', label: '姓名', labelClassName: 'col-name'},
+        {name: 'name', label: '姓名'},
         {
             name: 'age',
             label: '年龄',
@@ -20,12 +20,7 @@ export const tableConf = {
                 ]
             }
         },
-        {name: 'gender', label: '性别', sortable: true}
-    ],
-    cellRenderer(item, key, col, rowIndex) {
-        if (key === 'gender') {
-            return '<a data-command="DELETE" href="javascript:void(0)">删除</a>';
-        }
-        return item[key];
-    }
+        {name: 'gender', label: '性别', sortable: true},
+        {name: 'operation', label: '操作'}
+    ]
 };

@@ -22,8 +22,10 @@ store.addAction('fillUserNames', function (names) {
 });
 
 store.addAction('fetchUsers', function (userName, {getState, dispatch}) {
+    dispatch('setListLoading', true);
     return service.fetchUsers(userName).then(users => {
         dispatch('fillUsers', users);
+        dispatch('setListLoading', false);
     });
 });
 
@@ -45,3 +47,6 @@ store.addAction('removeUser', function (index) {
     return updateBuilder().splice('users', index, 1);
 });
 
+store.addAction('setListLoading', function (status) {
+    return updateBuilder().set('loading', status);
+});

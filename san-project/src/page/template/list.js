@@ -28,7 +28,7 @@ const MyComponent = san.defineComponent({
         return {
             userNames: [],
             userName: '',
-            user: [],
+            users: [],
             table: tableConf
         };
     },
@@ -65,9 +65,9 @@ const MyComponent = san.defineComponent({
         router.locator.reload();
     },
 
-    onCommand({type, payload, rowIndex}) {
+    removeRecord(index) {
         // 通过store修改users
-        const user = this.data.get('users')[rowIndex - 1];
+        const user = this.data.get('users')[index];
         this.actions.remove(user.id);
     }
 });
@@ -75,7 +75,7 @@ const MyComponent = san.defineComponent({
 // 这里来链接页面 && store  绑定的变量类似于redux中state的概念。可以全局共享，如果是本地的变量，自己在initData中声明即可。
 
 connect.san(
-    {users: 'users', userNames: 'userNames'},
+    {users: 'users', userNames: 'userNames', listLoading: 'loading'},
     {
         list: 'fetchUsers',
         remove: 'startRemoveUser',
