@@ -37,14 +37,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx', '.es6'],
-        mainFiles: ['index', 'main'],
-        alias: {
-            'eoo': alias('@ecomfe/eoo'),
-            'mini-event': alias('@ecomfe/mini-event'),
-            'er': alias('@ecomfe/er'),
-            'inf-ria': alias('@ecomfe/inf-ria'),
-            'inf-i18n': alias('@ecomfe/inf-i18n')
-        }
+        mainFiles: ['index', 'main']
     },
     module: {
         rules: [
