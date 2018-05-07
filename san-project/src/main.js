@@ -7,7 +7,9 @@ import {router} from 'san-router';
 
 // style
 import 'san-xui/dist/xui.css';
-import './style.less';
+import './page/template/list.less';
+import './page/error/notFound.less';
+import './iconfont.less';
 
 // actions
 import './page/template/action';

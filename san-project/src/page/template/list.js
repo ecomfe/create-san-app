@@ -7,25 +7,31 @@ import san from 'san';
 import {router, Link} from 'san-router';
 import {connect} from 'san-store';
 
-import {Table, Button, Select} from 'san-xui';
+import {Table, Button, Select, Loading} from 'san-xui';
 import {formatDate} from '../../filters';
 
+import Aside from './Aside';
 import {template} from './list.template';
-import {tableConf} from './config';
+import {tableConf, blocks} from './config';
+
 
 
 const MyComponent = san.defineComponent({
     template,
     components: {
         'router-link': Link,
+        'ui-aside': Aside,
         'xui-table': Table,
         'xui-button': Button,
-        'xui-select': Select
+        'xui-select': Select,
+        'ui-loading': Loading
     },
 
     // 目前共享的数据放在了san-store, 本地配置类型的数据放在initData。
     initData() {
         return {
+            title: 'SAN 列表页面',
+            blocks: blocks,
             userNames: [],
             userName: '',
             users: [],
