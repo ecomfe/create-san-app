@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "foo",
+      "age": 10,
+      "gender": "M"
+    },
+    {
+      "id": "2",
+      "name": "bar",
+      "age": 20,
+      "gender": "F"
+    },
+    {
+      "id": "3",
+      "name": "foo",
+      "age": 30,
+      "gender": "F"
+    },
+    {
+      "id": "4",
+      "name": "foo",
+      "age": 30,
+      "gender": "F"
+    },
+    {
+      "id": "5",
+      "name": "bar",
+      "age": 35,
+      "gender": "F"
+    },
+    {
+      "id": "6",
+      "name": "foo",
+      "age": 40,
+      "gender": "F"
+    },
+    {
+      "id": "7",
+      "name": "bar",
+      "age": 40,
+      "gender": "未知"
+    }
+  ],
+  "success": {
+    "success": true,
+    "result": {}
+  },
+  "fail": {
+    "success": false,
+    "result": {}
+  },
+  "userNames": [
+    {
+      "text": "foo",
+      "value": "foo"
+    },
+    {
+      "text": "bar",
+      "value": "bar"
+    }
+  ]
+}
