@@ -10,17 +10,13 @@ import {connect} from 'san-store';
 import {Table, Button, Select, Loading} from 'san-xui';
 import {formatDate} from '../../filters';
 
-import Aside from './Aside';
 import {template} from './list.template';
 import {tableConf, blocks} from './config';
-
-
 
 const MyComponent = san.defineComponent({
     template,
     components: {
         'router-link': Link,
-        'ui-aside': Aside,
         'xui-table': Table,
         'xui-button': Button,
         'xui-select': Select,
